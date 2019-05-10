@@ -1,0 +1,11 @@
+- init yarn project 
+- install webpack and webpack-cli 
+- step the application folder structure 
+- create webpack.config.js file and configure it with basic configuration like entry and ouput .. 
+- add file-loader to load images of type png and jpg
+- add sass code and install sass-loader
+- add class component and add some attribute use them in class functions you will get an error so add babel-loader to updtae your
+        project with new js features 
+-  Extracting CSS Into a Separate Bundle With mini-css-extract-plugin 
+- Browser Caching "bundle[contenthash].js"
+- How To Clean Dist Folder Before Generating New Bundles
