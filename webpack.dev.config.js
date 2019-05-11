@@ -1,3 +1,17 @@
+//   ,---,                                        ,--,                                    ____                               ___
+//   .'  .' `\                                    ,--.'|               ,-.----.           ,'  , `.                           ,--.'|_
+// ,---.'     \                                   |  | :       ,---.   \    /  \       ,-+-,.' _ |                  ,---,    |  | :,'
+// |   |  .`\  |                 .---.            :  : '      '   ,'\  |   :    |   ,-+-. ;   , ||              ,-+-. /  |   :  : ' :
+// :   : |  '  |    ,---.      /.  ./|    ,---.   |  ' |     /   /   | |   | .\ :  ,--.'|'   |  ||    ,---.    ,--.'|'   | .;__,'  /
+// |   ' '  ;  :   /     \   .-' . ' |   /     \  '  | |    .   ; ,. : .   : |: | |   |  ,', |  |,   /     \  |   |  ,"' | |  |   |
+// '   | ;  .  |  /    /  | /___/ \: |  /    /  | |  | :    '   | |: : |   |  \ : |   | /  | |--'   /    /  | |   | /  | | :__,'| :
+// |   | :  |  ' .    ' / | .   \  ' . .    ' / | '  : |__  '   | .; : |   : .  | |   : |  | ,     .    ' / | |   | |  | |   '  : |__
+// '   : | /  ;  '   ;   /|  \   \   ' '   ;   /| |  | '.'| |   :    | :     |`-' |   : |  |/      '   ;   /| |   | |  |/    |  | '.'|
+// |   | '` ,/   '   |  / |   \   \    '   |  / | ;  :    ;  \   \  /  :   : :    |   | |`-'       '   |  / | |   | |--'     ;  :    ;
+// ;   :  .'     |   :    |    \   \ | |   :    | |  ,   /    `----'   |   | :    |   ;/           |   :    | |   |/         |  ,   /
+// |   ,.'        \   \  /      '---"   \   \  /   ---`-'              `---'.|    '---'             \   \  /  '---'           ---`-'
+// '---'           `----'                `----'                          `---`                       `----'
+
 const webpack = require("webpack");
 const path = require("path");
 // const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
@@ -19,7 +33,8 @@ module.exports = {
   output: {
     path: BUILD_DIR,
     // filename: "bundle[contenthash].js"
-    filename: "[name][hash:8].js"
+    filename: "[name][hash:8].js",
+    publicPath: ""
   },
   mode: "development",
   devServer: {
@@ -49,11 +64,13 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
+            babelrc: true,
+            presets: [],
             plugins: ["transform-class-properties"]
           }
         }
