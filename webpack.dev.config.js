@@ -1,18 +1,29 @@
+const webpack = require("webpack");
 const path = require("path");
 // const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+// VGLOBAL VARIABLES
+
+const BUILD_DIR = path.resolve(__dirname, "./dist");
+const APP_DIR = path.resolve(__dirname, "./src");
+const VENDOR_LIBS = ["react", "react-dom"];
 module.exports = {
-  entry: "./index.js",
+  // entry: "./index.js",
+  entry: {
+    bundle: "./index.js",
+    vendor: VENDOR_LIBS
+  },
   output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: "bundle[contenthash].js"
+    path: BUILD_DIR,
+    // filename: "bundle[contenthash].js"
+    filename: "[name].js"
   },
   mode: "development",
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: BUILD_DIR,
     compress: true,
     port: 9000
   },

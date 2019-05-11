@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.dev.config ",
-    "prod": "webpack --config webpack.production.config"
+    "dev": "webpack-dev-server --config webpack.dev.config",
+    "prod": "webpack --config webpack.production.config",
+    "test": "webpack -d --watch"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
