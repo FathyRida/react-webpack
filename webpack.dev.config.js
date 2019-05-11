@@ -19,13 +19,19 @@ module.exports = {
   output: {
     path: BUILD_DIR,
     // filename: "bundle[contenthash].js"
-    filename: "[name].js"
+    filename: "[name][hash:8].js"
   },
   mode: "development",
   devServer: {
     contentBase: BUILD_DIR,
     compress: true,
-    port: 9000
+    port: 9000,
+    disableHostCheck: false,
+    headers: {
+      API_KEY: "API_KEY_VALUE_HERE"
+    },
+    open: true,
+    hot: true
   },
   watch: true,
   module: {
@@ -65,6 +71,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "WebPack Project",
       template: "./public/index.html"
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ]
 };
