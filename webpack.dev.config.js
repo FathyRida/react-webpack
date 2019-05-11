@@ -8,9 +8,14 @@ module.exports = {
   entry: "./index.js",
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "bundle.js"
+    filename: "bundle[contenthash].js"
   },
   mode: "development",
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 9000
+  },
   watch: true,
   module: {
     rules: [
@@ -42,12 +47,13 @@ module.exports = {
     // Developemt
     // new UglifyJsPlugin(),
     new MiniCssExtractPlugin({
-      //   filename: "styles[contenthash].css"
-      filename: "styles.css"
+      filename: "styles[contenthash].css"
+      // filename: "styles.css"
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "WebPack Project"
+      title: "WebPack Project",
+      template: "./public/index.html"
     })
   ]
 };

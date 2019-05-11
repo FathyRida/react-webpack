@@ -49,5 +49,18 @@ module.exports = {
         title: "WebPack Project"
       })
     ]
-  }
+  },
+  plugins: [
+    // Developemt
+    // new UglifyJsPlugin(),
+    new MiniCssExtractPlugin({
+      //   filename: "styles[contenthash].css"
+      filename: "styles.css"
+    }),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: "WebPack Project",
+      template: "./public/index.html"
+    })
+  ]
 };
